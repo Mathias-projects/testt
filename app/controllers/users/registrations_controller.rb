@@ -15,6 +15,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     resource.save
     response.set_header('Access-Control-Allow-Origin', '*')
+    response.set_header('Access-Control-Allow-Methods', 'POST, PUT, DELETE, GET, OPTIONS')
+    response.set_header('Access-Control-Request-Method', '*')
+    response.set_header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization')
     yield resource if block_given?
     if resource.persisted?
       if resource.active_for_authentication?
